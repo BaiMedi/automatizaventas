@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Flujo de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #01BD39;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #01BD39;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #019e2f;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta a {
+            text-decoration: none;
+            color: white;
+            background-color: #01BD39;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .cta a:hover {
+            background-color: #019e2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador para Construir tu Flujo de Ventas</h1>
+        <p>Introduce la información de tu producto y público objetivo para generar un flujo de ventas optimizado.</p>
+        
+        <form id="flujoForm">
+            <div class="form-group">
+                <label for="producto">Producto o servicio:</label>
+                <input type="text" id="producto" placeholder="Ej. Curso de marketing digital" required>
+            </div>
+            <div class="form-group">
+                <label for="publico">Público objetivo:</label>
+                <textarea id="publico" rows="3" placeholder="Ej. Emprendedores, dueños de pequeñas empresas" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="canales">Canales de venta:</label>
+                <select id="canales" multiple>
+                    <option value="redes sociales">Redes Sociales</option>
+                    <option value="email marketing">Email Marketing</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="landing page">Landing Page</option>
+                </select>
+            </div>
+            <button type="button" onclick="generarFlujo()">Generar Flujo</button>
+        </form>
+        
+        <div id="resultado" class="result" style="display: none;"></div>
+        
+        <div class="cta">
+            <p>Revoluciona tu Negocio con el Poder del Chat Inteligente</p>
+            <a href="https://klicana.work/tdivKK">SÍ! INSCRIBIRME A LUCRACHAT IA!</a>
+        </div>
+    </div>
+
+    <script>
+        function generarFlujo() {
+            const producto = document.getElementById('producto').value;
+            const publico = document.getElementById('publico').value;
+            const canales = Array.from(document.getElementById('canales').selectedOptions).map(option => option.value);
+
+            let flujo = `
+                <h2>Flujo de Ventas Generado</h2>
+                <p><strong>Producto:</strong> ${producto}</p>
+                <p><strong>Público Objetivo:</strong> ${publico}</p>
+                <p><strong>Canales Seleccionados:</strong> ${canales.join(', ')}</p>
+                <h3>Recomendaciones:</h3>
+                <ul>
+                    <li><strong>Captación:</strong> Utiliza ${canales.includes('redes sociales') ? 'campañas en redes sociales' : 'anuncios dirigidos'} para atraer prospectos.</li>
+                    <li><strong>Nurturing:</strong> Implementa secuencias de ${canales.includes('email marketing') ? 'emails automatizados' : 'mensajes de WhatsApp'} para educar y nutrir leads.</li>
+                    <li><strong>Conversión:</strong> Diseña una ${canales.includes('landing page') ? 'landing page' : 'estrategia personalizada'} optimizada con un llamado a la acción claro.</li>
+                    <li><strong>Seguimiento:</strong> Usa recordatorios automatizados y ofertas personalizadas para cerrar ventas.</li>
+                </ul>
+                <p>Este flujo está diseñado para maximizar tus oportunidades y convertir prospectos en clientes con eficacia.</p>
+            `;
+
+            document.getElementById('resultado').innerHTML = flujo;
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
